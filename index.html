@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>registration form</title>
+<meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
+<meta name="description" content="This document is an example of JavaScript Form Validation using a sample registration form. " />
+<!-- <script src="sample-registration-form-validation.js"></script> -->
+<style>
+    h1 {
+margin-left: 70px;
+}
+form li {
+list-style: none;
+margin-bottom: 5px;
+}
+
+form ul li label{
+float: left;
+clear: left;
+width: 100px;
+text-align: right;
+margin-right: 10px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:14px;
+}
+
+form ul li input, select, span {
+float: left;
+margin-bottom: 10px;
+}
+
+form textarea {
+float: left;
+width: 350px;
+height: 150px;
+}
+
+[type="submit"] {
+clear: left;
+margin: 20px 0 0 230px;
+font-size:18px
+}
+[type="reset"] {
+clear: left;
+margin: 20px 0 0 230px;
+font-size:18px
+}
+
+p {
+margin-left: 70px;
+font-weight: bold;
+}
+</style>
+</head>
+<body onload="document.registration.username.focus();">
+<h1>Registration Form</h1>
+
+<form name="RegForm" action="./login.html" onsubmit="return register()" >
+<ul>
+<li><label for="username">Name:</label>
+    <input type="text" name="username"  size="50" /></li>
+
+<li><label for="passid">Password:</label>
+    <input type="password" name="passid" size="12" /></li>
+
+<li><label for="passidCon">Password Confirmation:</label>
+    <input type="password" name="passidCon" size="12" /></li>
+
+<li><label for="email">Email:</label>
+     <input type="email" name="email" size="50" /></li>
+
+<li><label class="gender">Gender:</label>
+    <input type="radio" name="msex" value="Male" id="male" /><span>Male</span>
+    <input type="radio" name="msex" value="Female" id="female" /><span>Female</span>
+</li>
+
+
+
+<br>
+<br>
+<li><input type="submit" name="submit" value="OK" />
+    <input type="reset" name="cancel" value="cancel" />
+</li>
+</ul>
+</form>
+
+<script>
+
+function register() {
+        var name = document.forms["RegForm"]["username"];
+        var password = document.forms["RegForm"]["passid"];
+        var passcon = document.forms["RegForm"]["passidCon"];
+        var email = document.forms["RegForm"]["email"];
+        var gender = document.forms["RegForm"]["gender"];
+        var genderM=document.forms['RegForm']["male"];
+        var genderF=document.forms['RegForm']["female"];
+
+
+
+     
+  
+        if (name.value == "") {
+            window.alert("Please enter your name!");
+            return false;
+        }
+        localStorage.setItem('name', name.value);
+
+  
+        if (password.value == "") {
+            window.alert("Please enter your password");
+            password.focus();
+            return false;
+        }
+        localStorage.setItem('password', password.value);
+        if (passcon.value == "" || passcon.value!= password.value) {
+            window.alert("Please confirm your password");
+            password.focus();
+            return false;
+        }
+
+        if (email.value == "") {
+            window.alert("Please enter your password");
+            password.focus();
+            return false;
+        }
+
+        if(genderM.checked==false && genderF.checked==false ) {
+        alert("You must select male or female");
+        return false;
+         }  
+
+         if(genderM.checked==true){
+            localStorage.setItem('gender','male');
+         }
+
+        if(genderF.checked==true){
+
+            localStorage.setItem('gender','female');
+         }
+
+        return true;
+    }
+
+</script>
+
+
+
+</body>
+</html>
