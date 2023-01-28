@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>login form</title>
+<meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
+<meta name="description" content="This document is an example of JavaScript Form Validation using a sample registration form. " />
+<style>
+    h1 {
+margin-left: 70px;
+}
+form li {
+list-style: none;
+margin-bottom: 5px;
+}
+
+form ul li label{
+float: left;
+clear: left;
+width: 100px;
+text-align: right;
+margin-right: 10px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:14px;
+}
+
+form ul li input, select, span {
+float: left;
+margin-bottom: 10px;
+}
+
+form textarea {
+float: left;
+width: 350px;
+height: 150px;
+}
+
+[type="submit"] {
+clear: left;
+margin: 20px 0 0 230px;
+font-size:18px
+}
+[type="reset"] {
+clear: left;
+margin: 20px 0 0 230px;
+font-size:18px
+}
+
+p {
+margin-left: 70px;
+font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h1>login Form</h1>
+<form name="RegForm" action="/pro.html" onsubmit="return login()">
+<ul>
+<li><label for="username">Name:</label>
+    <input type="text" name="username" id="username"size="50" /></li>
+
+<li><label for="passid">Password:</label>
+    <input type="password" name="passid" id="passid" size="12" /></li>
+
+
+<br>
+<br>
+<li><input type="submit" name="submit" value="OK" />
+    <input type="reset" name="cancel"  value="cancel" />
+</li>
+</ul>
+</form>
+
+<script>
+    function login() {
+        var name = document.forms["RegForm"]["username"];
+        var password = document.forms["RegForm"]["passid"];
+  
+        if (name.value == "") {
+            window.alert("Please enter your name!");
+            return false;
+        }
+        var storedName = localStorage.getItem('name');
+
+  
+        if (password.value == "") {
+            window.alert("Please enter your password");
+            return false;
+        }
+        var storedPw = localStorage.getItem('password');
+
+        if(name.value !== storedName || password.value !== storedPw) {
+    alert('incorrect password or userName');
+    return false;
+}else {
+    alert('You are loged in.');
+}
+        
+        return true;
+    }
+
+   
+
+</script>
+
+
+
+</body>
+</html>
